@@ -4,7 +4,7 @@ Submitted by: **Jason Ames**
 
 This web app: **An astrophysics-themed CRUD web app built with React, Supabase, and the Stars API. Assemble a team of real stars to counter cosmic forces and achieve equilibrium.**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
