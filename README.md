@@ -1,8 +1,8 @@
-# Web Development Project 7 - *Name of App Here*
+# Web Development Project 7 - *Cosmic Crewmates*
 
-Submitted by: **Your Name Here**
+Submitted by: **Jason Ames**
 
-This web app: **insert description**
+This web app: **An astrophysics-themed CRUD web app built with React, Supabase, and the Stars API. Assemble a team of real stars to counter cosmic forces and achieve equilibrium.**
 
 Time spent: **X** hours spent in total
 
