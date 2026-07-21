@@ -11,7 +11,7 @@ Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 
-- [ ] **The web app contains a page that features a create form to add a new crewmate**
+- [X] **The web app contains a page that features a create form to add a new crewmate**
   - Users can name the crewmate
   - Users can set the crewmate’s attributes by clicking on one of several values
 - [ ] **The web app includes a summary page of all the user’s added crewmatese**
