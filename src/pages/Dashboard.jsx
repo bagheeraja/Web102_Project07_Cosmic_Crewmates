@@ -13,7 +13,6 @@ export default function Dashboard() {
 
   async function fetchCrewmates() {
     setLoading(true);
-    // Fetch all crewmates ordered by newest first
     const { data, error } = await supabase
       .from('crewmates')
       .select('*')
@@ -28,6 +27,26 @@ export default function Dashboard() {
     setLoading(false);
   }
 
+  // --- SUMMARY STATISTICS CALCULATIONS ---
+  const totalCrew = crewmates.length;
+
+  // Average Engine Speed
+  const avgSpeed = totalCrew > 0
+    ? (crewmates.reduce((acc, c) => acc + (c.game_stats?.speed || 0), 0) / totalCrew).toFixed(1)
+    : 0;
+
+  // Percent Blue Hull Aura
+  const blueCount = crewmates.filter(c => c.api_data?.color === 'Blue').length;
+  const bluePct = totalCrew > 0 ? Math.round((blueCount / totalCrew) * 100) : 0;
+
+  // Percent High Warp (Speed >= 7)
+  const highSpeedCount = crewmates.filter(c => (c.game_stats?.speed || 0) >= 7).length;
+  const highSpeedPct = totalCrew > 0 ? Math.round((highSpeedCount / totalCrew) * 100) : 0;
+
+  // Percent Main Sequence Class
+  const mainSeqCount = crewmates.filter(c => c.api_data?.starType === 'Main Sequence').length;
+  const mainSeqPct = totalCrew > 0 ? Math.round((mainSeqCount / totalCrew) * 100) : 0;
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -40,14 +59,42 @@ export default function Dashboard() {
       {loading && <p className="loading-text">Scanning deep space for crewmates...</p>}
       {errorMsg && <p className="error-banner">{errorMsg}</p>}
 
-      {!loading && crewmates.length === 0 && (
+      {!loading && totalCrew > 0 && (
+        <div className="stats-summary-card">
+          <h3>📊 Fleet Command Telemetry Summary</h3>
+          <div className="stats-grid">
+            <div className="stat-box">
+              <span className="stat-value">{totalCrew}</span>
+              <span className="stat-label">Total Recruits</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{avgSpeed} <small>/10</small></span>
+              <span className="stat-label">Avg Engine Speed</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{bluePct}%</span>
+              <span className="stat-label">Blue Hull Aura</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{highSpeedPct}%</span>
+              <span className="stat-label">High-Warp (7+ Speed)</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{mainSeqPct}%</span>
+              <span className="stat-label">Main Sequence Class</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!loading && totalCrew === 0 && (
         <div className="empty-state">
           <p>No crewmates recruited yet! Your fleet is empty.</p>
           <Link to="/create" className="cta-link">Recruit your first star crewmate →</Link>
         </div>
       )}
 
-      {!loading && crewmates.length > 0 && (
+      {!loading && totalCrew > 0 && (
         <div className="crew-grid">
           {crewmates.map((crew) => (
             <div key={crew.id} className="crew-card">

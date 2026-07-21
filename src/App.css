@@ -296,3 +296,140 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+/* Detail Page Styles */
+.detail-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.detail-card {
+  background-color: #1a2332;
+  border: 1px solid #2a3447;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: left;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2a3447;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-header h2 {
+  color: #ffffff;
+  margin: 0;
+}
+
+.detail-section p {
+  color: #cbd5e1;
+  margin: 0.75rem 0;
+  font-size: 1rem;
+}
+
+.detail-section h3 {
+  color: #4facfe;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.mono-text {
+  font-family: monospace;
+  color: #a0aec0;
+  font-size: 0.85rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Edit & Delete Buttons */
+.edit-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.delete-btn {
+  padding: 0.85rem;
+  background-color: transparent;
+  color: #ff4b4b;
+  border: 1px solid #ff4b4b;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ff4b4b22;
+}
+
+.delete-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Summary Telemetry Card */
+.stats-summary-card {
+  background-color: #1a2332;
+  border: 1px solid #4facfe44;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.stats-summary-card h3 {
+  color: #4facfe;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background-color: #121824;
+  border: 1px solid #2a3447;
+  border-radius: 8px;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.stat-value small {
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: 0.3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
